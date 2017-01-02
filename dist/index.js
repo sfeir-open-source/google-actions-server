@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Action = undefined;
+exports.ActionServer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -23,13 +23,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 process.env.DEBUG = 'actions-on-google:*';
 
-var Action = exports.Action = function () {
-    function Action() {
+var INTENT = {
+    WELCOME: 'intent_welcome',
+    INPUT: 'intent_input'
+};
+
+var ActionServer = exports.ActionServer = function () {
+    function ActionServer() {
         var port = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 8080;
 
-        _classCallCheck(this, Action);
-
-        this.didntHearYa = ['I can\'t read your text', 'If you\'re still there, what\'s your text?', 'Let me read your text?'];
+        _classCallCheck(this, ActionServer);
 
         this.actionsMap = new Map();
         this.app = (0, _express2.default)();
@@ -38,10 +41,15 @@ var Action = exports.Action = function () {
         this.handlers = [];
     }
 
-    _createClass(Action, [{
-        key: 'config',
-        value: function config(didntHearYa) {
-            this.didntHearYa = didntHearYa;
+    _createClass(ActionServer, [{
+        key: 'welcome',
+        value: function welcome(callback) {
+            this.intent(ActionServer.intent.action.MAIN, callback);
+        }
+    }, {
+        key: 'subscribe',
+        value: function subscribe(subscribeIntent) {
+            this.subscribeIntent = subscribeIntent;
         }
     }, {
         key: 'when',
@@ -79,9 +87,9 @@ var Action = exports.Action = function () {
             this.handlers.push(handler.bind(this));
         }
     }, {
-        key: 'mainIntent',
-        value: function mainIntent(assistant) {
-            this.wrapAssistant(assistant).say('Let\'s go!');
+        key: 'intent',
+        value: function intent(key, callback) {
+            this.actionsMap.set(key, callback.bind(this));
         }
     }, {
         key: 'wrapAssistant',
@@ -96,8 +104,15 @@ var Action = exports.Action = function () {
     }, {
         key: 'ask',
         value: function ask(message) {
-            var inputPrompt = this.assistant.buildInputPrompt(true, message, this.didntHearYa);
+            var inputPrompt = this.assistant.buildInputPrompt(true, message, ['Sorry']);
             this.assistant.ask(inputPrompt);
+        }
+    }, {
+        key: 'requestNamePermission',
+        value: function requestNamePermission(context) {
+            // assistant.isPermissionGranted()
+            var permission = this.assistant.SupportedPermissions.NAME;
+            this.assistant.askForPermission(content, permission);
         }
     }, {
         key: 'handleRequest',
@@ -106,14 +121,11 @@ var Action = exports.Action = function () {
 
             this.app.post('/', function (request, response) {
                 _this4.assistant = new _actionsOnGoogle.ActionsSdkAssistant({ request: request, response: response });
-                var handlersCounter = 0;
 
-                _this4.actionsMap.set(_this4.assistant.StandardIntents.MAIN, _this4.mainIntent.bind(_this4));
-                _this4.actionsMap.set(_this4.assistant.StandardIntents.TEXT, function (assistant) {
-                    var userResponse = assistant.getRawInput();
+                _this4.handlers.map(function (handler, index) {
 
-                    _this4.handlers.map(function (handler, index) {
-
+                    _this4.actionsMap.set(INTENT.INPUT + '_' + index, function (assistant) {
+                        var userResponse = assistant.getRawInput();
                         try {
                             handler.apply(_this4, [assistant, userResponse]);
                         } catch (e) {
@@ -124,6 +136,7 @@ var Action = exports.Action = function () {
                     });
                 });
 
+                //this.actionsMap.set(this.assistant.StandardIntents.TEXT, this.subscribeIntent.bind(this));
                 _this4.assistant.handleRequest(_this4.actionsMap);
             });
         }
@@ -138,7 +151,14 @@ var Action = exports.Action = function () {
         }
     }]);
 
-    return Action;
+    return ActionServer;
 }();
 
+ActionServer.intent = {
+    action: {
+        MAIN: 'assistant.intent.action.MAIN',
+        TEXT: 'assistant.intent.action.TEXT',
+        PERMISSION: 'assistant.intent.action.PERMISSION'
+    }
+};
 ;
