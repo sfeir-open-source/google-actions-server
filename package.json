@@ -1,7 +1,7 @@
 {
     "name": "@manekinekko/google-actions-server",
     "description": "Google actions Node.js server ",
-    "version": "1.0.0",
+    "version": "2.0.0-alpha.1",
     "license": "MIT",
     "author": "Wassim Chegham",
     "engines": {
@@ -14,7 +14,7 @@
         "serve": "node dist/index.js"
     },
     "dependencies": {
-        "@manekinekko/gactions": "^1.0.0",
+        "@manekinekko/google-actions-binary": "^1.0.0",
         "actions-on-google": "^1.0.0",
         "body-parser": "^1.15.2",
         "express": "^4.14.0",
