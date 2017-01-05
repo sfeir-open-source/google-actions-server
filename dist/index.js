@@ -309,7 +309,7 @@ var ActionServer = exports.ActionServer = function () {
 
             this.app.post('/', function (request, response) {
                 _this3.assistant = new _actionsOnGoogle.ActionsSdkAssistant({ request: request, response: response });
-                _this3.assistant._handleRequest(_this3.actionsMap);
+                _this3.assistant.handleRequest(_this3.actionsMap);
             });
         }
     }, {

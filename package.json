@@ -21,7 +21,7 @@
     "scripts": {
         "start": "nodemon lib/index.js --exec babel-node",
         "build": "babel lib -d dist",
-        "deploy": "npm version patch && git push --tags && git push && npm publish"
+        "deploy": "npm run build && npm version patch && git push --tags && git push && npm publish"
     },
     "dependencies": {
         "@manekinekko/google-actions-binary": "^1.0.0",
