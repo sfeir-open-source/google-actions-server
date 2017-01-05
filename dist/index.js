@@ -103,8 +103,8 @@ var ActionServer = exports.ActionServer = function () {
             this.conversationMessages = conversationMessages;
         }
     }, {
-        key: 'randomConversationMessage',
-        value: function randomConversationMessage() {
+        key: 'getRandomConversationMessage',
+        value: function getRandomConversationMessage() {
             return this.conversationMessages[this.conversationMessagesCounter++ % (this.conversationMessages.length - 1)];
         }
     }, {
@@ -197,8 +197,6 @@ var ActionServer = exports.ActionServer = function () {
                     return false;
                 }
             }
-
-            l(queryTimeBoosting);
 
             var found = dataSet.__index.search(rawInput, queryTimeBoosting);
 
@@ -305,19 +303,19 @@ var ActionServer = exports.ActionServer = function () {
             this.assistant.askForPermission(content, permission);
         }
     }, {
-        key: 'handleRequest',
-        value: function handleRequest() {
+        key: '_handleRequest',
+        value: function _handleRequest() {
             var _this3 = this;
 
             this.app.post('/', function (request, response) {
                 _this3.assistant = new _actionsOnGoogle.ActionsSdkAssistant({ request: request, response: response });
-                _this3.assistant.handleRequest(_this3.actionsMap);
+                _this3.assistant._handleRequest(_this3.actionsMap);
             });
         }
     }, {
         key: 'listen',
         value: function listen() {
-            this.handleRequest();
+            this._handleRequest();
             var server = this.app.listen(this.app.get('port'), function () {
                 console.log('App listening on port %s', server.address().port);
                 console.log('Press Ctrl+C to quit.');
