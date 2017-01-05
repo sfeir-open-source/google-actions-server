@@ -1,29 +1,29 @@
 {
-    "name": "@manekinekko/google-actions-server",
-    "description": "Google actions Node.js server ",
-    "version": "2.0.0-alpha.1",
-    "license": "MIT",
-    "author": "Wassim Chegham",
-    "engines": {
-        "node": "> 5"
-    },
-    "main": "./dist/index.js",
-    "scripts": {
-        "start": "nodemon lib/index.js --exec babel-node",
-        "build": "babel lib -d dist",
-        "serve": "node dist/index.js"
-    },
-    "dependencies": {
-        "@manekinekko/google-actions-binary": "^1.0.0",
-        "actions-on-google": "^1.0.0",
-        "body-parser": "^1.15.2",
-        "express": "^4.14.0",
-        "ngrok": "^2.2.4",
-        "nodemon": "^1.11.0",
-        "babel-cli": "^6.18.0",
-        "babel-preset-es2015": "^6.18.0",
-        "babel-preset-stage-2": "^6.18.0",
-        "elasticlunr": "^0.9.5",
-        "request": "^2.79.0"
-    }
+  "name": "@manekinekko/google-actions-server",
+  "description": "Google actions Node.js server ",
+  "version": "2.0.0",
+  "license": "MIT",
+  "author": "Wassim Chegham",
+  "engines": {
+    "node": "> 5"
+  },
+  "main": "./dist/index.js",
+  "scripts": {
+    "start": "nodemon lib/index.js --exec babel-node",
+    "build": "babel lib -d dist",
+    "serve": "node dist/index.js"
+  },
+  "dependencies": {
+    "@manekinekko/google-actions-binary": "^1.0.0",
+    "actions-on-google": "^1.0.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "ngrok": "^2.2.4",
+    "nodemon": "^1.11.0",
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "elasticlunr": "^0.9.5",
+    "request": "^2.79.0"
+  }
 }
