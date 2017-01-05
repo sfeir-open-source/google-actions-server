@@ -105,7 +105,8 @@ var ActionServer = exports.ActionServer = function () {
     }, {
         key: 'getRandomConversationMessage',
         value: function getRandomConversationMessage() {
-            return this.conversationMessages[this.conversationMessagesCounter++ % (this.conversationMessages.length - 1)];
+            var messageIndex = this.conversationMessagesCounter++ % (this.conversationMessages.length - 1) || 0;
+            return this.conversationMessages[messageIndex];
         }
     }, {
         key: 'train',
@@ -263,20 +264,6 @@ var ActionServer = exports.ActionServer = function () {
                     responseCallback(error, null);
                 }
             });
-        }
-    }, {
-        key: '_extend',
-        value: function _extend(target) {
-            for (var _len2 = arguments.length, sources = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-                sources[_key2 - 1] = arguments[_key2];
-            }
-
-            sources.forEach(function (source) {
-                for (var prop in source) {
-                    target[prop] = source[prop];
-                }
-            });
-            return target;
         }
 
         // a convenient method to abstract the assistant "ask" process
