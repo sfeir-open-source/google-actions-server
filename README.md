@@ -1,8 +1,9 @@
 ## GAS: Google Assistant Server
 
-![image](https://cloud.githubusercontent.com/assets/1699357/21663314/b022ace0-d2df-11e6-8713-9f68b1c3ee3b.png)
-
-A Node.js server for your [Google Assistant](https://developers.google.com/actions/) (and Google Home).
+<p align="center">
+  <img src="https://cloud.githubusercontent.com/assets/1699357/21663314/b022ace0-d2df-11e6-8713-9f68b1c3ee3b.png" width="350">
+</p>
+<p align="center">A Node.js server for your <a href="https://developers.google.com/actions/">Google Assistant</a> (and Google Home).</p>
 
 ### Get it from NPM
 
