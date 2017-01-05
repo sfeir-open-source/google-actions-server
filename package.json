@@ -3,11 +3,21 @@
     "description": "Google actions Node.js server ",
     "version": "2.0.2",
     "license": "MIT",
-    "author": "Wassim Chegham",
+    "author": {
+        "name": "Wassim Chegham",
+        "email": "github@wassimchegham.com"
+    },
     "engines": {
         "node": "> 5"
     },
     "main": "./dist/index.js",
+    "homepage": "https://github.com/manekinekko/google-actions-server",
+    "bugs": "https://github.com/manekinekko/google-actions-server/issues",
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:manekinekko/google-actions-server.git"
+    },
     "scripts": {
         "start": "nodemon lib/index.js --exec babel-node",
         "build": "babel lib -d dist",
