@@ -4,6 +4,8 @@
 <h2 align="center">GAS: Google Assistant Server</h2>  
 <p align="center">A Node.js server for your <a href="https://developers.google.com/actions/">Google Assistant</a> (and Google Home).</p>
 
+<img src="https://cdn-images-1.medium.com/max/2000/1*51-QcjdjlRiy4_ya2NjA2g.png" align="center"/>
+
 ### Get it from NPM
 
 ```bash
