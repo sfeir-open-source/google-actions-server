@@ -54,6 +54,8 @@ var ActionServer = exports.ActionServer = function () {
         this.app.set('port', process.env.PORT || port);
         this.app.use(_bodyParser2.default.json({ type: 'application/json' }));
 
+        this.request = _request2.default; // node module
+
         // phrase random (incremental) counter
         this.conversationMessagesCounter = 0;
         this.conversationMessages = [];
@@ -250,7 +252,7 @@ var ActionServer = exports.ActionServer = function () {
 
             var urlSymbol = Symbol(url);
 
-            return (0, _request2.default)(url, function (error, response, html) {
+            return this.request(url, function (error, response, html) {
                 if (!error && response.statusCode == 200) {
 
                     _this2.requestCache[urlSymbol] = {};
