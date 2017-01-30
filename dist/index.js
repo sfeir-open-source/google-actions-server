@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.ActionServer = undefined;
+exports.ActionServer = exports.Permission = exports.Intent = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -43,6 +43,21 @@ var l = function l() {
     return console.log.apply(console, args);
 };
 
+var Intent = exports.Intent = {
+    Action: {
+        MAIN: 'assistant.intent.action.MAIN',
+        TEXT: 'assistant.intent.action.TEXT',
+        NAME_PERMISSION: 'assistant.intent.action.NAME_PERMISSION',
+        LOCATION_PERMISSION: 'assistant.intent.action.LOCATION_PERMISSION'
+    }
+};
+
+var Permission = exports.Permission = {
+    NAME: 'assistant.SupportedPermissions.NAME',
+    DEVICE_PRECISE_LOCATION: 'assistant.SupportedPermissions.DEVICE_PRECISE_LOCATION',
+    DEVICE_COARSE_LOCATION: 'assistant.SupportedPermissions.DEVICE_COARSE_LOCATION'
+};
+
 var ActionServer = exports.ActionServer = function () {
     function ActionServer() {
         var port = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 8080;
@@ -67,7 +82,7 @@ var ActionServer = exports.ActionServer = function () {
     _createClass(ActionServer, [{
         key: 'welcome',
         value: function welcome(callback) {
-            this.intent(ActionServer.intent.action.MAIN, callback);
+            this.intent(Intent.Action.MAIN, callback);
         }
     }, {
         key: 'intent',
@@ -197,7 +212,7 @@ var ActionServer = exports.ActionServer = function () {
                     filterByScore = lookupOptions.threshold;
                 } else {
                     throw new Error('The "threshold" parameter in lookups must either a function or a number.');
-                    return false;
+                    return false; // you know, life is short!
                 }
             }
 
@@ -279,17 +294,13 @@ var ActionServer = exports.ActionServer = function () {
             this.assistant.data = data;
             this.assistant.ask(inputPrompt);
         }
-
-        /**
-         * @todo
-         */
-
     }, {
-        key: 'requestNamePermission',
-        value: function requestNamePermission(context) {
-            // assistant.isPermissionGranted()
-            var permission = this.assistant.SupportedPermissions.NAME;
-            this.assistant.askForPermission(content, permission);
+        key: 'requestPermissions',
+        value: function requestPermissions(permissions) {
+            if (Array.isArray(permissions) === false) {
+                permissions = [permissions];
+            }
+            return Promise.resolve(this.assistant.askForPermissions('To help you', permissions));
         }
     }, {
         key: '_handleRequest',
@@ -315,11 +326,4 @@ var ActionServer = exports.ActionServer = function () {
     return ActionServer;
 }();
 
-ActionServer.intent = {
-    action: {
-        MAIN: 'assistant.intent.action.MAIN',
-        TEXT: 'assistant.intent.action.TEXT',
-        PERMISSION: 'assistant.intent.action.PERMISSION'
-    }
-};
 ;
