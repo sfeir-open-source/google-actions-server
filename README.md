@@ -130,7 +130,7 @@ A convenient method that will trigger a random greeting message for you.
 
 #### setConversationMessages(conversationMessages)
 
-A convenient method to set a list of random conversations asking the user for another query. For instant: `How can I help?` or `Do you have another reuqest?`.
+A convenient method to set a list of random conversations asking the user for another query. For instant: `How can I help?` or `Do you have another request?`.
 
 #### getRandomConversationMessage()
 
