@@ -309,6 +309,7 @@ var ActionServer = exports.ActionServer = function () {
                 console.log('App listening on port %s', server.address().port);
                 console.log('Press Ctrl+C to quit.');
             });
+            return server;
         }
     }]);
 

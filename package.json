@@ -21,7 +21,8 @@
   "scripts": {
     "start": "nodemon lib/index.js --exec babel-node",
     "build": "babel lib -d dist",
-    "deploy": "npm run build && npm version patch && git push --tags && git push && npm publish"
+    "deploy": "npm run build && npm version patch && git push --tags && git push && npm publish",
+    "test": "npm run build && mocha"
   },
   "dependencies": {
     "@manekinekko/google-actions-binary": "^1.0.0",
@@ -35,6 +36,11 @@
     "babel-preset-stage-2": "^6.18.0",
     "elasticlunr": "^0.9.5",
     "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "chai": "^3.5.0",
+    "supertest": "^3.0.0"
   },
   "keywords": [
     "google",
