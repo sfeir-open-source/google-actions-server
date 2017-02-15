@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://cloud.githubusercontent.com/assets/1699357/21663314/b022ace0-d2df-11e6-8713-9f68b1c3ee3b.png" width="350">
 </p>
-<h2 align="center">GAS: Google Assistant Server <img src="https://circleci.com/gh/manekinekko/google-actions-server.svg?style=svg"/></h2>  
+<h2 align="center">GAS: Google Assistant Server <img src="https://circleci.com/gh/manekinekko/google-actions-server.svg?style=svg"/></h2>
 <p align="center">A Node.js server for your <a href="https://developers.google.com/actions/">Google Assistant</a> (and <a href="https://madeby.google.com/home/">Google Home</a>).</p>
 
 <img src="https://cdn-images-1.medium.com/max/2000/1*51-QcjdjlRiy4_ya2NjA2g.png" align="center"/>
@@ -40,7 +40,7 @@ agent.intent(ActionServer.intent.action.TEXT, (assistant) => {
   const userInput = assistant.getRawInput();
 
 })
-    
+
 // start listening for commands (on port 8080)
 agent.listen();
 
@@ -53,7 +53,7 @@ Available intents are:
 #### ActionServer.intent.action.MAIN
 
 This intent is triggered when users invoke your action by name, such as "talk to <YOUR ACTION NAME HERE>". This intent si required for every action package.
-  
+
 #### ActionServer.intent.action.TEXT
 
 This intent is triggered when users speak input and you receive the input as a request to your fulfillment endpoint.
@@ -114,7 +114,7 @@ With `agent.ask()`, you can just pass it the message:
 agent.ask(message);
 ```
 
-Of course, you can still call `assistant.ask()` if you want to provide a configuration. 
+Of course, you can still call `assistant.ask()` if you want to provide a configuration.
 
 #### setGreetings(greetings)
 
@@ -178,9 +178,9 @@ Please note that the `fields` option has been provided since the items inside th
 
 #### matchUserRequest(dataSetKey, rawInput, responseCallback, lookupOptions = {})
 
-**NOTE:** GAS uses (elasticlunr)[https://github.com/weixsong/elasticlunr.js] that performs the [Full-Text Search](https://en.wikipedia.org/wiki/Full-text_search) technique to retrieve the matched documents.
+**NOTE:** GAS uses [elasticlunr](https://github.com/weixsong/elasticlunr.js) that performs the [Full-Text Search](https://en.wikipedia.org/wiki/Full-text_search) technique to retrieve the matched documents.
 
-Use this method to match the user's input with a set of data provided in `agent.train()`. 
+Use this method to match the user's input with a set of data provided in `agent.train()`.
 
 For instance, let's say you have the `decisionList` list from the example above; in order to find a matched document you would call `agent.matchUserRequest()` like so:
 
@@ -227,7 +227,7 @@ const lookupOptions = {
 
 ##### fields
 
-The fields property is a [elasticlunr configuration query](https://github.com/weixsong/elasticlunr.js#52-configuration-query). For instance, we could provide the following configuration for the example from above: 
+The fields property is a [elasticlunr configuration query](https://github.com/weixsong/elasticlunr.js#52-configuration-query). For instance, we could provide the following configuration for the example from above:
 
 ```javascript
 const lookupOptions = {
