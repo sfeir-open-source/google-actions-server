@@ -33,7 +33,7 @@ import { ActionServer } from '@manekinekko/google-actions-server';
 const agent = new ActionServer();
 
 agent.welcome((assistant) => {
-    agent.ask('Hello Home. How can I help');
+    agent.ask('Welcome Home. How can I help');
 });
 
 agent.intent(ActionServer.intent.action.TEXT, (assistant) => {
