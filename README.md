@@ -2,19 +2,19 @@
   <img src="https://cloud.githubusercontent.com/assets/1699357/21663314/b022ace0-d2df-11e6-8713-9f68b1c3ee3b.png" width="350">
 </p>
 <h2 align="center">GAS: Google Assistant Server
-    <a href="https://circleci.com/gh/manekinekko/google-actions-server"><img src="https://circleci.com/gh/manekinekko/google-actions-server.svg?style=svg"/></a>
+    <a href="https://circleci.com/gh/sfeir-open-source/google-actions-server"><img src="https://circleci.com/gh/sfeir-open-source/google-actions-server.svg?style=svg"/></a>
 </h2>
 <p align="center">A Node.js server for your <a href="https://developers.google.com/actions/">Google Assistant</a> (and <a href="https://madeby.google.com/home/">Google Home</a>).</p>
 
 <img src="https://cdn-images-1.medium.com/max/2000/1*51-QcjdjlRiy4_ya2NjA2g.png" align="center"/>
 
-### Get it from NPM
+### Install via NPM
 
 ```bash
 npm i -S @manekinekko/google-actions-server
 ```
 
-### Get it from Yarn
+### Install via Yarn
 
 ```bash
 $ yarn add @manekinekko/google-actions-server
@@ -76,7 +76,7 @@ Calling `new ActionServer()` will return an `Agent` instance, which exposes the 
 
 #### agent.intent(name, callback)
 
-Register a `callback` with an intent of type `ActionServer.intent.action.*`. When invoked, the `callback` function receives an instance of **[ActionsSdkAssistant](https://developers.google.com/actions/reference/ActionsSdkAssistant)**. For instance:
+Register a `callback` with an intent of type `ActionServer.intent.action.*`. When invoked, the `callback` function receives an instance of **[ActionsSdkAssistant](https://developers.google.com/actions/sdk/)**. For instance:
 
 ```javascript
 agent.welcome(ActionServer.intent.action.TEXT, (assistant) => {
@@ -205,7 +205,7 @@ In this case, you may provide a `lookupOptions` object in order to configure/twe
 
 **NOTE:** if no documents are found, an empty array is returned.
 
-##### threshold
+##### Threshold
 
 You can provide the `threshold` property to filter out the false-positives. `threshold` can be either a Number or a Function.
 
@@ -227,7 +227,7 @@ const lookupOptions = {
 };
 ```
 
-##### fields
+##### Fields
 
 The fields property is a [elasticlunr configuration query](https://github.com/weixsong/elasticlunr.js#52-configuration-query). For instance, we could provide the following configuration for the example from above:
 
@@ -248,7 +248,7 @@ const lookupOptions = {
 
 See [elasticlunr configuration query](https://github.com/weixsong/elasticlunr.js#52-configuration-query) for more details.
 
-#### fetch(url, responseCallback, useCache = true)
+#### Fetch(url, responseCallback, useCache = true)
 
 A convenient method to fetch a remote document. Useful if you want to get more information from a remote website. For instance:
 
