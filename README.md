@@ -54,7 +54,7 @@ Available intents are:
 
 #### ActionServer.intent.action.MAIN
 
-This intent is triggered when users invoke your action by name, such as "talk to <YOUR ACTION NAME HERE>". This intent si required for every action package.
+This intent is triggered when users invoke your action by name, such as "talk to <YOUR ACTION NAME HERE>". This intent is required for every action package.
 
 #### ActionServer.intent.action.TEXT
 
@@ -68,7 +68,7 @@ Triggered if Google Assistant needs to ask the user for more permissions (not im
 
 #### ActionServer(port = 8080)
 
-Create an HTTP server and set it to listen on port `port` (default: 8080).
+Create a HTTP server and set it to listen on port `port` (default: 8080).
 
 ### Agent
 
