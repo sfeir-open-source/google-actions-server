@@ -68,7 +68,7 @@ Triggered if Google Assistant needs to ask the user for more permissions (not im
 
 #### ActionServer(port = 8080)
 
-Create a HTTP server and set it to listen on port `port` (default: 8080).
+Create an HTTP server and set it to listen on port `port` (default: 8080).
 
 ### Agent
 
