@@ -54,7 +54,7 @@ Available intents are:
 
 #### ActionServer.intent.action.MAIN
 
-This intent is triggered when users invoke your action by name, such as "talk to <YOUR ACTION NAME HERE>". This intent si required for every action package.
+This intent is triggered when users invoke your action by name, such as "talk to <YOUR ACTION NAME HERE>". This intent is required for every action package.
 
 #### ActionServer.intent.action.TEXT
 
